@@ -14,6 +14,7 @@ from telebot import types
 # импортируем из библиотеки time метод sleep 
 from time import sleep 
 import random 
+import webbrowser
  
 TOKEN = "5999737407:AAHroigNIAHfenI2ipMYOLMiylY7nm7VEl4" 
 # если добавляем из файла конфига, то вот так 
@@ -53,6 +54,14 @@ def komanashow(message):
 @moySuperBot.message_handler(commands=["myid"])
 def moyid(message):
     moySuperBot.send_message(message.chat.id, message.from_user.id)
+
+@moySuperBot.message_handler(commands=['site'])
+def site(message):
+    sleep(0.5)
+    moySuperBot.send_chat_action(message.chat.id, "typing")
+    moySuperBot.send_message(message.chat.id, 'в этой школе я обучался')
+    sleep(1)
+    webbrowser.open('https://coddyschool.com/')
  
  
 @moySuperBot.message_handler(content_types=["text"]) 
